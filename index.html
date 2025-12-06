@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>LOONOOL · Demo 主页</title>
+  <title>LOONOOL · Logo 风险检测工具 Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -16,22 +16,31 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 880px;
       margin: 60px auto;
       padding: 0 20px;
-      text-align: center;
     }
 
     h1 {
       font-size: 28px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      text-align: center;
     }
 
     p.desc {
       font-size: 14px;
       color: #6b7280;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     .button {
@@ -44,76 +53,112 @@
       font-size: 15px;
       font-weight: 600;
       transition: all 0.2s ease;
-      margin-bottom: 16px;
+    }
+
+    .button.secondary {
+      background: #111827;
     }
 
     .button:hover {
-      background: #1d4ed8;
+      opacity: 0.92;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 16px;
     }
 
     .card {
-      margin-top: 40px;
       border: 1px solid #e5e7eb;
-      padding: 20px;
+      padding: 18px 18px 16px;
       border-radius: 12px;
       background: white;
-      text-align: left;
+      font-size: 14px;
     }
 
     .card h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin: 0 0 8px;
     }
 
     .card p {
-      font-size: 14px;
+      font-size: 13px;
       color: #4b5563;
       line-height: 1.6;
-      margin-bottom: 6px;
+      margin: 4px 0;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 6px 0;
+      font-size: 13px;
+      color: #4b5563;
     }
 
     footer {
-      margin-top: 60px;
+      margin-top: 40px;
       font-size: 12px;
       color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>LOONOOL · Demo 项目主页</h1>
-    <p class="desc">这是你的静态项目首页，可以从这里进入 PDF 报告模板页面。</p>
-
-    <!-- 蓝色大按钮（内联一样写一遍，防止被外部样式覆盖） -->
-    <a
-      href="report.pdf.html"
-      target="_blank"
-      class="button"
-      style="display:inline-block;background:#2563eb;color:#fff;border-radius:10px;
-             padding:14px 26px;text-decoration:none;font-size:15px;font-weight:600;"
-    >
-      ➜ 打开 PDF 报告页面（report.pdf.html）
-    </a>
-
-    <!-- 备用纯文字链接：即使样式失效，也能看到 -->
-    <p style="margin-top:8px;font-size:13px;color:#4b5563;">
-      如果没有看到上面的蓝色按钮，请点击这里：
-      <a href="report.pdf.html" target="_blank" style="color:#2563eb;">
-        打开 PDF 报告页面（备用链接）
-      </a>
+    <h1>LOONOOL · Logo 风险检测工具 Demo</h1>
+    <p class="desc">
+      这是一个演示项目首页。可以从这里进入「报告详情页」和「PDF 报告模板」页面。
     </p>
 
-    <div class="card">
-      <h2>当前项目文件</h2>
-      <p>- index.html（当前页面）</p>
-      <p>- report.pdf.html（PDF 报告模板页面）</p>
-      <p>- main.js / styles.css（如有使用）</p>
-      <p>- 将来你可以在这里继续添加 Task 页面、报告入口等。</p>
+    <!-- 按钮区：报告详情 + PDF 模板 -->
+    <div class="button-row">
+      <!-- 报告详情页（report.html） -->
+      <a class="button" href="report.html">
+        打开报告详情页面（Web）
+      </a>
+
+      <!-- PDF 模板页（report.pdf.html） -->
+      <a class="button secondary" href="report.pdf.html" target="_blank">
+        打开 PDF 报告模板（report.pdf.html）
+      </a>
+    </div>
+
+    <!-- 两个说明卡片 -->
+    <div class="grid">
+      <div class="card">
+        <h2>报告详情页面（report.html）</h2>
+        <p>用于展示 Safe-to-Use 报告的 Web 页面结构，包含：</p>
+        <ul>
+          <li>Logo 预览区域</li>
+          <li>综合评分（A–E）</li>
+          <li>四大检测模块卡片</li>
+          <li>综合建议 & 风险声明</li>
+        </ul>
+        <p>前端可以在这个页面接入真实接口数据。</p>
+      </div>
+
+      <div class="card">
+        <h2>PDF 报告模板（report.pdf.html）</h2>
+        <p>用于 HTML → PDF 的模板，包含：</p>
+        <ul>
+          <li>A4 排版、适合打印</li>
+          <li>和 Web 报告一致的模块顺序</li>
+          <li>适合作为导出给客户的正式报告</li>
+        </ul>
+        <p>通常由后端或前端脚本渲染并导出为 PDF 文件。</p>
+      </div>
     </div>
 
     <footer>
-      LOONOOL © 2025 · 仅用于 Demo 展示
+      LOONOOL © 2025 · Demo · index.html + report.html + report.pdf.html
     </footer>
   </div>
 </body>
