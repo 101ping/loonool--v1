@@ -44,6 +44,7 @@
       font-size: 15px;
       font-weight: 600;
       transition: all 0.2s ease;
+      margin-bottom: 16px;
     }
 
     .button:hover {
@@ -82,18 +83,31 @@
 <body>
   <div class="container">
     <h1>LOONOOL · Demo 项目主页</h1>
-    <p class="desc">这是你的静态项目首页，可以从这里进入报告模板页面。</p>
+    <p class="desc">这是你的静态项目首页，可以从这里进入 PDF 报告模板页面。</p>
 
-    <!-- 跳转按钮 -->
-    <a class="button" href="report.pdf.html" target="_blank">
+    <!-- 蓝色大按钮（内联一样写一遍，防止被外部样式覆盖） -->
+    <a
+      href="report.pdf.html"
+      target="_blank"
+      class="button"
+      style="display:inline-block;background:#2563eb;color:#fff;border-radius:10px;
+             padding:14px 26px;text-decoration:none;font-size:15px;font-weight:600;"
+    >
       ➜ 打开 PDF 报告页面（report.pdf.html）
     </a>
 
-    <!-- 可选：预览信息卡片 -->
+    <!-- 备用纯文字链接：即使样式失效，也能看到 -->
+    <p style="margin-top:8px;font-size:13px;color:#4b5563;">
+      如果没有看到上面的蓝色按钮，请点击这里：
+      <a href="report.pdf.html" target="_blank" style="color:#2563eb;">
+        打开 PDF 报告页面（备用链接）
+      </a>
+    </p>
+
     <div class="card">
       <h2>当前项目文件</h2>
       <p>- index.html（当前页面）</p>
-      <p>- report.pdf.html（报告模板页面）</p>
+      <p>- report.pdf.html（PDF 报告模板页面）</p>
       <p>- main.js / styles.css（如有使用）</p>
       <p>- 将来你可以在这里继续添加 Task 页面、报告入口等。</p>
     </div>
