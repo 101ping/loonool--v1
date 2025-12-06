@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logo 风险检测报告 · Web 报告详情</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+        "Microsoft YaHei", system-ui, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 32px auto 40px;
+      padding: 0 16px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .breadcrumb {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #6b7280;
+      text-align: right;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      font-size: 11px;
+      margin-left: 4px;
+    }
+
+    .pill-grade {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      color: #92400e;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px 14px;
+      font-size: 13px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin: 0 0 6px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin: 0 0 4px;
+    }
+
+    p {
+      margin: 4px 0 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 4px 0 8px 18px;
+      padding: 0;
+      font-size: 13px;
+    }
+
+    .muted {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .footer {
+      font-size: 11px;
+      color: #9ca3af;
+      text-align: right;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <div class="breadcrumb">Workspace / Task / Report</div>
+        <h1>Logo 风险检测报告 · Web 详情页（示意）</h1>
+        <div class="muted">这里展示报告 ID、生成时间等基础信息。</div>
+      </div>
+      <div class="meta">
+        <div>报告 ID：R-20250101-001</div>
+        <div>版本：v1 <span class="pill">v2 / v3 切换占位</span></div>
+        <div>综合等级：<span class="pill pill-grade">B 级 · 示例</span></div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Logo 预览区域</h2>
+        <p class="muted">这里显示当前检测的 Logo 缩略图。</p>
+      </div>
+      <div class="card">
+        <h2>综合评分（Safe-to-Use Grade）</h2>
+        <p>等级：<strong>B 级</strong>（示意占位）</p>
+        <p class="muted">
+          一句话总结：此处展示整体安全性总结占位文本。
+        </p>
+      </div>
+    </section>
+
+    <section class="modules">
+      <div class="card">
+        <h3>模块 1：商标相似度检测</h3>
+        <p>风险等级：中（示意）</p>
+        <ul>
+          <li>主要相似原因占位</li>
+          <li>补充说明占位</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>模块 2：行业视觉冲突</h3>
+        <p>行业重叠度：高（示意）</p>
+        <ul>
+          <li>行业重叠原因占位</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>模块 3：视觉误解风险</h3>
+        <p>风险等级：无明显风险（示意）</p>
+      </div>
+
+      <div class="card">
+        <h3>模块 4：构图质量评估</h3>
+        <p>构图等级：良好（示意）</p>
+        <ul>
+          <li>关键发现占位</li>
+          <li>优化建议占位</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>综合建议（示意）</h2>
+      <p class="muted">此处展示高 / 中 / 低优先级建议占位。</p>
+    </section>
+
+    <div class="footer">
+      LOONOOL · Web 报告详情页示意 · report.html
+    </div>
+  </div>
+</body>
+</html>
