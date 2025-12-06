@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logo 风险检测报告 · Safe-to-Use Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* 打印相关设置：A4 竖版 */
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+        "Microsoft YaHei", system-ui, sans-serif;
+      color: #111827;
+      background: #f3f4f6;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 20mm 18mm 18mm;
+      background: #ffffff;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 4px 0 8px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 4px 0 8px 18px;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .muted {
+      color: #6b7280;
+      font-size: 11px;
+    }
+
+    .label {
+      font-size: 11px;
+      color: #374151;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      margin-right: 4px;
+    }
+
+    .pill-grade {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      color: #92400e;
+      font-weight: 600;
+    }
+
+    .header {
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .header-meta {
+      text-align: right;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .header-meta-row {
+      margin-bottom: 2px;
+    }
+
+    .logo-box {
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px dashed #d1d5db;
+      background: #f9fafb;
+      padding: 10px;
+      text-align: center;
+      font-size: 11px;
+      color: #6b7280;
+      height: 65mm; /* 预留 Logo 图片区域 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .section-header {
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title-prefix {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-right: 4px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .summary-card {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 10px;
+      margin-top: 4px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .summary-item-label {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .summary-item-value {
+      font-size: 12px;
+      color: #111827;
+    }
+
+    .module-box {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      margin-top: 6px;
+    }
+
+    .module-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .module-level {
+      font-size: 11px;
+      color: #4b5563;
+    }
+
+    .recommend-card {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      margin-top: 6px;
+      background: #f9fafb;
+    }
+
+    .recommend-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .disclaimer-box {
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      background: #fef2f2;
+      font-size: 11px;
+      color: #7f1d1d;
+    }
+
+    .footer {
+      margin-top: 16px;
+      padding-top: 8px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    /* 分页示例：如需强制分页可给某些 section 加上此类 */
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 头部信息 -->
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <h1>Logo 风险检测报告（Safe-to-Use Report）</h1>
+          <p class="muted">
+            本报告展示对上传 Logo 的风险检测结果，仅用于内部评估与决策参考。
+          </p>
+        </div>
+        <div class="header-meta">
+          <div class="header-meta-row"><span class="label">报告 ID：</span>R-20250101-001</div>
+          <div class="header-meta-row"><span class="label">版本：</span>v1</div>
+          <div class="header-meta-row"><span class="label">生成时间：</span>2025-01-01 12:00</div>
+          <div class="header-meta-row"><span class="label">Workspace：</span>Workspace Name</div>
+          <div class="header-meta-row"><span class="label">Task：</span>Task Name</div>
+        </div>
+      </div>
+
+      <div class="logo-box">
+        <span>此区域为 Logo 预览占位（生成 PDF 时插入实际 Logo 图片）</span>
+      </div>
+    </header>
+
+    <!-- 1. 总体结论 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">1</span>
+          <h2>总体结论（Executive Summary）</h2>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <p class="summary-item-label">综合安全等级（Safe-to-Use Grade）</p>
+        <p>
+          <span class="pill pill-grade">等级：B</span>
+          <span class="muted">示例：存在一定风险，建议优化后使用。</span>
+        </p>
+        <p class="summary-item-label">一句话总结（示例占位）：</p>
+        <p>
+          当前 Logo 在整体构图与辨识度上表现良好，但在行业视觉冲突与商标相似度方面存在一定重叠，建议在保持核心识别元素的前提下进行适度调整。
+        </p>
+
+        <div class="summary-grid">
+          <div>
+            <div class="summary-item-label">商标相似度</div>
+            <div class="summary-item-value">中风险</div>
+          </div>
+          <div>
+            <div class="summary-item-label">行业视觉冲突</div>
+            <div class="summary-item-value">较高</div>
+          </div>
+          <div>
+            <div class="summary-item-label">视觉误解风险</div>
+            <div class="summary-item-value">无明显风险</div>
+          </div>
+          <div>
+            <div class="summary-item-label">构图质量</div>
+            <div class="summary-item-value">良好</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 商标相似度检测 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">2</span>
+          <h2>商标相似度检测（Trademark Similarity）</h2>
+        </div>
+      </div>
+
+      <div class="module-box">
+        <div class="module-header-line">
+          <div class="module-level">风险等级：中</div>
+          <div class="muted">本段为模块标题占位</div>
+        </div>
+        <p class="label">主要原因说明（示例占位）：</p>
+        <ul>
+          <li>Logo 的整体轮廓与常见品牌的几何形状较为接近。</li>
+          <li>色块分布与部分现有品牌存在结构上的相似。</li>
+          <li>在缩小尺寸时，轮廓与既有标识可能产生视觉重叠。</li>
+        </ul>
+        <p class="muted">
+          注：本模块仅基于视觉特征分析，不构成任何商标法律判断。
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. 行业视觉冲突 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">3</span>
+          <h2>行业视觉冲突分析（Industry Visual Overlap）</h2>
+        </div>
+      </div>
+
+      <div class="module-box">
+        <div class="module-header-line">
+          <div class="module-level">重叠度等级：高</div>
+        </div>
+        <p class="label">行业重叠说明（示例占位）：</p>
+        <ul>
+          <li>配色方案与该行业主流品牌高度一致。</li>
+          <li>核心图形使用了行业内常见的符号化图形语言。</li>
+          <li>在同一应用场景中易与同类 Logo 产生混淆。</li>
+        </ul>
+        <p class="muted">
+          注：行业冲突分析用于辅助差异化判断，不替代用户自身的品牌策略决策。
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. 视觉误解风险 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">4</span>
+          <h2>视觉误解风险（Visual Misinterpretation）</h2>
+        </div>
+      </div>
+
+      <div class="module-box">
+        <div class="module-header-line">
+          <div class="module-level">风险等级：无明显风险</div>
+        </div>
+        <p class="label">风险标签（示例占位）：</p>
+        <p class="muted">无明显警示符号 / 禁止类符号 / 特定文化敏感图形的强烈联想。</p>
+        <p class="label">说明（示例占位）：</p>
+        <p>
+          当前 Logo 未呈现出易引发误解的图形结构或组合，整体视觉语义较为中性，未与常见警示图标、禁用标识等产生直接联想。
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. 构图质量评估 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">5</span>
+          <h2>构图质量评估（Composition Quality）</h2>
+        </div>
+      </div>
+
+      <div class="module-box">
+        <div class="module-header-line">
+          <div class="module-level">构图等级：良好</div>
+        </div>
+        <p class="label">关键发现（示例占位）：</p>
+        <ul>
+          <li>整体图形排布均衡，重心稳定。</li>
+          <li>留白比例合理，图形未显得过于拥挤或空洞。</li>
+          <li>缩小到小尺寸时仍具备基本识别度。</li>
+        </ul>
+        <p class="label">可优化方向（示例占位）：</p>
+        <ul>
+          <li>适度增加主图形与背景之间的对比度。</li>
+          <li>在应用场景（如 App 图标）中可进一步测试小尺寸表现。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. 综合建议 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">6</span>
+          <h2>综合建议（Recommendations）</h2>
+        </div>
+      </div>
+
+      <div class="recommend-card">
+        <p class="recommend-group-title">高优先级（示例占位）：</p>
+        <ul>
+          <li>结合行业现有品牌进行对比评估，考虑在配色或轮廓上进行更明显区分。</li>
+        </ul>
+
+        <p class="recommend-group-title">中优先级（示例占位）：</p>
+        <ul>
+          <li>在不同背景色与应用场景中测试 Logo 的可读性与稳定性。</li>
+        </ul>
+
+        <p class="recommend-group-title">低优先级（示例占位）：</p>
+        <ul>
+          <li>根据未来品牌升级节奏，预留一定的延展空间（如动画、子品牌图形）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 7. 风险声明 -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="section-title-prefix">7</span>
+          <h2>风险声明（Disclaimer）</h2>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        <p>
+          本报告基于系统对 Logo 图像的自动化分析结果，用于提供视觉与设计层面的参考意见，并不构成任何法律建议或结论。
+        </p>
+        <p>
+          如涉及商标注册、法律合规等具体问题，请咨询专业机构或法律顾问。如对本报告内容有疑问，可通过内部渠道联系相关负责人。
+        </p>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <span>LOONOOL · Logo Risk Analysis Report · 内部使用</span>
+      <span>Report ID: R-20250101-001 · Page 1 / 1</span>
+    </footer>
+  </div>
+</body>
+</html>
