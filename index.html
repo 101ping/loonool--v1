@@ -1,21 +1,24 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
+  <title>Logo 风险检测工具 · PRD V1</title>
   <title>Logo 风险检测工具 · UI 线框图</title>
-  <title>LOONOOL · Demo 主页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<style>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="app">
+  <style>
     /* 基础 */
     * { box-sizing: border-box; }
-body {
-margin: 0;
-      padding: 0;
-font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-"Microsoft YaHei", system-ui, sans-serif;
-background: #f3f4f6;
-color: #111827;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+        "Microsoft YaHei", system-ui, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
     .page {
       max-width: 1200px;
       margin: 24px auto 40px;
@@ -29,6 +32,15 @@ color: #111827;
     h2 { font-size: 18px; margin-bottom: 6px; }
     h3 { font-size: 14px; margin-bottom: 4px; }
 
+    <!-- 左侧侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo-circle">LR</div>
+        <div class="sidebar-title">
+          <div class="sidebar-title-main">Logo Risk Monitor</div>
+          <div class="sidebar-title-sub">需求文档 · PRD V1</div>
+        </div>
+      </div>
     /* 线框容器 */
     .wireframe-section {
       margin-bottom: 32px;
@@ -43,6 +55,22 @@ color: #111827;
       margin-bottom: 10px;
     }
 
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-label">文档章节</div>
+        <a href="#sec0">0. 文档说明</a>
+        <a href="#sec1">1. 产品背景</a>
+        <a href="#sec2">2. 产品目标</a>
+        <a href="#sec3">3. 用户流程</a>
+        <a href="#sec4">4. 核心检测模块</a>
+        <a href="#sec5">5. 报告输出</a>
+        <a href="#sec6">6. 展现方式</a>
+        <a href="#sec7">7. 前端需求</a>
+        <a href="#sec8">8. 后端需求</a>
+        <a href="#sec9">9. 数据与权限</a>
+        <a href="#sec10">10. Out of Scope</a>
+        <a href="#sec11">11. NFR</a>
+        <a href="#sec12">12. 验收标准</a>
+      </nav>
     .box {
       border: 1px solid #d1d5db;
       border-radius: 8px;
@@ -50,32 +78,32 @@ color: #111827;
       background: #f9fafb;
       font-size: 12px;
       color: #4b5563;
-    .container {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-      text-align: center;
-}
+    }
     .box + .box { margin-top: 8px; }
 
+      <div class="sidebar-footer">
+        <div class="sidebar-tag">LOONOOL 内部文档</div>
+        <div class="sidebar-note">仅用于产品与研发协作，不对外公开。</div>
+      </div>
+    </aside>
     .muted {
       color: #9ca3af;
       font-size: 11px;
     }
 
+    <!-- 右侧主内容 -->
+    <main class="main">
+      <div class="main-inner">
     /* Task 页面布局 */
     .task-header {
       border-bottom: 1px solid #e5e7eb;
       padding-bottom: 10px;
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-margin-bottom: 12px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       gap: 12px;
-}
+    }
     .task-header-left {
       display: flex;
       flex-direction: column;
@@ -87,10 +115,7 @@ margin-bottom: 12px;
     }
     .task-header-right {
       font-size: 11px;
-
-    p.desc {
-      font-size: 14px;
-color: #6b7280;
+      color: #6b7280;
       text-align: right;
     }
     .pill {
@@ -100,41 +125,58 @@ color: #6b7280;
       padding: 2px 8px;
       font-size: 10px;
       margin-left: 4px;
-      margin-bottom: 36px;
-}
+    }
 
+        <!-- 顶部信息条 -->
+        <header class="page-header">
+          <div>
+            <div class="breadcrumb">文档中心 / Logo 风险检测工具</div>
+            <h1>Logo 风险检测工具 · 需求文档（PRD V1）</h1>
+          </div>
+          <div class="header-meta">
+            <span class="pill pill-primary">PRD</span>
+            <span class="pill pill-soft">版本 V1</span>
+          </div>
+        </header>
     .task-main-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
       gap: 16px;
       margin-bottom: 16px;
-    .button {
-      display: inline-block;
-      padding: 14px 26px;
-      background: #2563eb;
-      color: #fff;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      transition: all 0.2s ease;
-}
+    }
 
+        <!-- 顶部说明卡片 -->
+        <section class="intro-card">
+          <p class="intro-title">
+            工具定位：对上传的 Logo 进行自动化风险分析，并生成可用于内部审核和对外沟通的 Safe-to-Use 报告。
+          </p>
+          <p class="intro-desc">
+            目标路径：<strong>上传 Logo → 自动检测四大风险模块 → 生成 Safe-to-Use 报告 → 在线查看 / 导出 PDF</strong>。
+          </p>
+        </section>
     .logo-upload-area {
       min-height: 180px;
     }
     .recent-report-area {
       min-height: 180px;
-    .button:hover {
-      background: #1d4ed8;
-}
+    }
 
+        <!-- 0 文档说明 -->
+        <section id="sec0" class="section collapsible-section">
+          <h2 class="section-title">0. 文档说明</h2>
+          <div class="section-body">
+            <p>
+              本文档用于说明「Logo 风险检测工具」在 V1 版本需要实现的功能范围、业务流程和输出形式，不包含代码或假数据。
+            </p>
+            <p>
+              本工具将作为 LOONOOL 图片审核系统中的一个独立能力模块，为品牌方、设计师和内部审核团队提供统一、可追溯的风险判断依据。
+            </p>
+          </div>
+        </section>
     .history-table {
       margin-top: 8px;
       border-radius: 8px;
-    .card {
-      margin-top: 40px;
-border: 1px solid #e5e7eb;
+      border: 1px solid #e5e7eb;
       padding: 8px;
       background: #f9fafb;
       font-size: 12px;
@@ -150,6 +192,21 @@ border: 1px solid #e5e7eb;
       border-bottom: none;
     }
 
+        <!-- 1 产品背景 -->
+        <section id="sec1" class="section collapsible-section">
+          <h2 class="section-title">1. 产品背景</h2>
+          <div class="section-body">
+            <p class="section-meta">痛点与动机</p>
+            <ul>
+              <li>缺乏标准化的 Logo 风险评估流程（相似度、行业雷同、误解风险等）。</li>
+              <li>缺少可复用、可归档、可对外展示的评估报告。</li>
+              <li>现有审核高度依赖人工经验，难以做到一致、可追溯。</li>
+            </ul>
+            <p>
+              因此需要一套自动化、模块化的 Logo 风险检测工具，嵌入 LOONOOL 的图片审核工作流中，为后续的 Safe-to-Use 报告提供数据基础。
+            </p>
+          </div>
+        </section>
     /* 报告详情页布局 */
     .report-grid {
       display: grid;
@@ -163,34 +220,78 @@ border: 1px solid #e5e7eb;
       gap: 10px;
     }
 
+        <!-- 2 产品目标 -->
+        <section id="sec2" class="section collapsible-section">
+          <h2 class="section-title">2. 产品目标（Objectives）</h2>
+          <div class="section-body">
+            <ul>
+              <li>支持用户上传单个 Logo 进行检测。</li>
+              <li>通过多维度分析输出结构化风险结论。</li>
+              <li>给出统一的 Safe-to-Use 安全等级，便于快速决策。</li>
+              <li>自动生成一份报告，可在线查看、可导出 PDF。</li>
+              <li>支持报告多版本管理（v1 / v2 / v3…）。</li>
+            </ul>
+          </div>
+        </section>
     .logo-preview-box {
       height: 160px;
-      padding: 20px;
-      border-radius: 12px;
-      background: white;
-      text-align: left;
-}
+    }
 
+        <!-- 3 用户流程 -->
+        <section id="sec3" class="section collapsible-section">
+          <h2 class="section-title">3. 用户流程（User Flow）</h2>
+          <div class="section-body">
+            <h3>3.1 高层流程</h3>
+            <ul>
+              <li>用户在 Workspace 中创建任务（Task）。</li>
+              <li>在任务中上传 Logo 图片。</li>
+              <li>系统自动触发 Logo 风险检测。</li>
+              <li>分析完成后生成一份报告并挂载到 Task 下。</li>
+              <li>用户可查看报告详情、下载 PDF、再次发起检测生成新版本。</li>
+            </ul>
+            <p class="section-meta">
+              目标：从上传到拿到报告的路径尽量简单，减少额外交互。
+            </p>
+          </div>
+        </section>
     .grade-box {
       min-height: 80px;
     }
 
+        <!-- 4 核心检测模块 -->
+        <section id="sec4" class="section collapsible-section">
+          <h2 class="section-title">4. 核心检测模块（Feature Modules）</h2>
+          <div class="section-body">
+            <h3>4.1 商标相似度检测</h3>
+            <p>
+              目标：识别 Logo 在视觉上是否与已有品牌外观存在相似风险，用于提示潜在外观冲突。
+            </p>
+            <ul>
+              <li>关注：轮廓结构、图形/字母组合、配色倾向、整体风格。</li>
+              <li>输出：相似度等级（低 / 中 / 高）、主要相似原因、非法律判断说明。</li>
+            </ul>
     .module-card {
       min-height: 80px;
-    .card h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-}
+    }
 
+            <h3>4.2 行业视觉冲突检测</h3>
+            <p>
+              目标：判断 Logo 是否与所在行业的主流视觉风格过度雷同，例如颜色、符号、构图模板等。
+            </p>
+            <ul>
+              <li>输出：行业重叠度等级、冲突原因描述、行业视觉趋势说明。</li>
+            </ul>
     .recommendation-box {
       min-height: 80px;
-    .card p {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.6;
-      margin-bottom: 6px;
-}
+    }
 
+            <h3>4.3 视觉误解风险检测</h3>
+            <p>
+              目标：识别该 Logo 是否可能被误解为警示符号、禁止符号或文化敏感图形。
+            </p>
+            <ul>
+              <li>输出：风险等级、风险标签、误解场景说明。</li>
+            </ul>
     .footer-bar {
       margin-top: 14px;
       border-top: 1px solid #e5e7eb;
@@ -198,12 +299,16 @@ border: 1px solid #e5e7eb;
       font-size: 11px;
       display: flex;
       justify-content: space-between;
-    footer {
-      margin-top: 60px;
-      font-size: 12px;
-color: #9ca3af;
-}
+      color: #9ca3af;
+    }
 
+            <h3>4.4 构图质量检测</h3>
+            <p>
+              目标：评估 Logo 本身的设计专业度和可用性（构图、留白、可读性、色彩对比等）。
+            </p>
+            <ul>
+              <li>输出：构图质量等级、关键发现、优化建议。</li>
+            </ul>
     /* 响应式 */
     @media (max-width: 900px) {
       .task-main-grid,
@@ -211,15 +316,38 @@ color: #9ca3af;
         grid-template-columns: minmax(0, 1fr);
       }
     }
-</style>
+  </style>
 </head>
 <body>
   <div class="page">
 
+            <h3>4.5 综合安全等级（Safe-to-Use Grade）</h3>
+            <p>
+              综合上述四个模块结果，输出 A–E 的安全等级，并附上一句总结和主要原因说明。
+            </p>
+          </div>
+        </section>
     <!-- Task 页面线框 -->
     <section class="wireframe-section">
       <div class="wireframe-label">页面 1 · Task 详情页（上传 Logo + 报告列表） · 线框</div>
 
+        <!-- 5 报告输出 -->
+        <section id="sec5" class="section collapsible-section">
+          <h2 class="section-title">5. 报告输出（Risk Report）</h2>
+          <div class="section-body">
+            <p>
+              Logo 风险检测工具的核心成果是一份 Safe-to-Use 风险报告，挂载在 Task 下，支持多版本记录。
+            </p>
+            <h3>5.1 报告结构</h3>
+            <ul>
+              <li>基础信息：Logo 缩略图、空间名、任务名、报告 ID、版本号、生成时间、审查方式。</li>
+              <li>总体结论：安全等级、一句话总结、四大模块关键指标概览。</li>
+              <li>详细分析：商标相似度、行业冲突、视觉风险、构图质量等章节。</li>
+              <li>综合建议：按优先级给出修改建议。</li>
+              <li>风险声明与联系方式：用于规避法律风险并提供反馈渠道。</li>
+            </ul>
+          </div>
+        </section>
       <!-- Header -->
       <div class="task-header">
         <div class="task-header-left">
@@ -233,6 +361,15 @@ color: #9ca3af;
         </div>
       </div>
 
+        <!-- 6 展现方式 -->
+        <section id="sec6" class="section collapsible-section">
+          <h2 class="section-title">6. 展现方式（Web & PDF）</h2>
+          <div class="section-body">
+            <h3>6.1 Web 报告页</h3>
+            <ul>
+              <li>独立报告详情页面，结构分块展示各章节。</li>
+              <li>支持章节折叠/展开，顶部有返回 Task 的入口。</li>
+            </ul>
       <!-- 主区域：左上传 / 右最近报告 -->
       <div class="task-main-grid">
         <!-- 左侧：Logo 上传区域 -->
@@ -247,6 +384,14 @@ color: #9ca3af;
           </ul>
         </div>
 
+            <h3>6.2 PDF 导出</h3>
+            <ul>
+              <li>基于 A4 排版，标题层级清晰。</li>
+              <li>包含页眉（报告 ID + 版本号）与页脚（页码）。</li>
+              <li>视觉风格正式，适合对外发送或内部汇报。</li>
+            </ul>
+          </div>
+        </section>
         <!-- 右侧：最新报告摘要 -->
         <div class="box recent-report-area">
           <h3>右侧：最近一次报告摘要</h3>
@@ -261,6 +406,16 @@ color: #9ca3af;
         </div>
       </div>
 
+        <!-- 7 前端需求 -->
+        <section id="sec7" class="section collapsible-section">
+          <h2 class="section-title">7. 前端需求（FE Requirements）</h2>
+          <div class="section-body">
+            <ul>
+              <li>在 Task 详情页增加“报告列表”区域，展示所有版本报告。</li>
+              <li>实现报告详情页，渲染各章节数据。</li>
+              <li>提供“生成 / 重新检测”与“导出 PDF”按钮。</li>
+              <li>适配移动端阅读体验（横向滚动最小化）。</li>
+            </ul>
       <!-- 历史报告列表 -->
       <div class="box">
         <h3>历史报告列表（版本管理）</h3>
@@ -270,21 +425,65 @@ color: #9ca3af;
             <div>版本 v3</div>
             <div>评分 B</div>
             <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
+</div>
+        </section>
+
+        <!-- 8 后端需求 -->
+        <section id="sec8" class="section collapsible-section">
+          <h2 class="section-title">8. 后端需求（BE Requirements）</h2>
+          <div class="section-body">
+            <ul>
+              <li>接收并存储上传的 Logo 文件。</li>
+              <li>封装四大检测模块并统一输出分析结果。</li>
+              <li>根据分析结果生成报告实体，并与 Task 建立关联。</li>
+              <li>提供查询单个报告、查询 Task 下报告列表的接口。</li>
+              <li>提供生成 PDF 的服务接口。</li>
+            </ul>
           <div class="history-row">
             <div>版本 v2</div>
             <div>评分 C</div>
             <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
+</div>
+        </section>
+
+        <!-- 9 数据与权限 -->
+        <section id="sec9" class="section collapsible-section">
+          <h2 class="section-title">9. 数据与权限</h2>
+          <div class="section-body">
+            <h3>9.1 数据层面</h3>
+            <ul>
+              <li>每个报告记录需包括：任务 ID、版本号、生成时间、分析结果概要等。</li>
+              <li>分析结果需结构化存储，便于前端渲染与版本对比。</li>
+            </ul>
+            <h3>9.2 权限与访问控制</h3>
+            <ul>
+              <li>仅当前 Workspace 的成员可以查看对应报告。</li>
+              <li>报告默认不公开，外部访问需要受控分享机制（如带 Token 的链接）。</li>
+            </ul>
           <div class="history-row">
             <div>版本 v1</div>
             <div>评分 D</div>
             <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
+</div>
+        </section>
         </div>
       </div>
     </section>
 
+        <!-- 10 Out of Scope -->
+        <section id="sec10" class="section collapsible-section">
+          <h2 class="section-title">10. Out of Scope（不在本期范围）</h2>
+          <div class="section-body">
+            <p>以下能力本期不做，但可作为后续版本规划方向：</p>
+            <ul>
+              <li>批量 Logo 检测与比对。</li>
+              <li>多 Logo 横向对比分析。</li>
+              <li>对接真实商标注册数据库进行法律层面检索。</li>
+              <li>自动生成替代设计方案的 AI 设计功能。</li>
+              <li>可视化报告模板编辑与企业自定义样式。</li>
+            </ul>
+          </div>
+        </section>
     <!-- 报告详情页线框 -->
     <section class="wireframe-section">
       <div class="wireframe-label">页面 2 · 报告详情页（Safe-to-Use 报告） · 线框</div>
@@ -302,6 +501,15 @@ color: #9ca3af;
         </div>
       </div>
 
+        <!-- 11 非功能性需求 -->
+        <section id="sec11" class="section collapsible-section">
+          <h2 class="section-title">11. 非功能性需求（NFR）</h2>
+          <div class="section-body">
+            <ul>
+              <li>单次检测的响应时间在可接受范围内（数秒级）。</li>
+              <li>报告页面加载流畅，无明显卡顿。</li>
+              <li>系统出现错误时需给出清晰的错误提示与重试方式。</li>
+            </ul>
       <!-- 左：Logo + 综合等级   右：模块卡片 -->
       <div class="report-grid">
         <!-- 左列 -->
@@ -315,9 +523,20 @@ color: #9ca3af;
             <p class="muted">
               此处展示 Safe-to-Use 综合等级（A–E）和一句话总结占位。
             </p>
-          </div>
+</div>
+        </section>
         </div>
 
+        <!-- 12 验收标准 -->
+        <section id="sec12" class="section collapsible-section">
+          <h2 class="section-title">12. 验收标准（Acceptance Criteria）</h2>
+          <div class="section-body">
+            <ul>
+              <li>上传符合规格的 Logo 文件可以成功触发检测。</li>
+              <li>四大检测模块均产生明确结果并展示在报告中。</li>
+              <li>报告可在 Task 下正常创建、查询，版本区分清晰。</li>
+              <li>用户可以成功导出 PDF，内容完整、排版正常。</li>
+            </ul>
         <!-- 右列：四大模块 -->
         <div class="report-right">
           <div class="box module-card">
@@ -331,7 +550,8 @@ color: #9ca3af;
           <div class="box module-card">
             <h3>模块 3：视觉误解风险</h3>
             <p class="muted">显示误解风险等级 + 标签 + 示例说明占位。</p>
-          </div>
+</div>
+        </section>
           <div class="box module-card">
             <h3>模块 4：构图质量检测</h3>
             <p class="muted">显示构图质量等级 + 关键发现 + 优化建议占位。</p>
@@ -339,13 +559,18 @@ color: #9ca3af;
         </div>
       </div>
 
+        <footer class="page-footer">
+          <span>Logo 风险检测工具 · PRD V1 · LOONOOL 内部使用</span>
+          <button id="backToTop" class="back-to-top" type="button">回到顶部</button>
+        </footer>
       <!-- 综合建议 -->
       <div class="box recommendation-box" style="margin-top: 12px;">
         <h3>综合建议（Recommendations）</h3>
         <p class="muted">
           此区域为整体建议占位：可以按高 / 中 / 低优先级分组列出建议内容。
         </p>
-      </div>
+</div>
+    </main>
 
       <!-- Footer 操作栏 -->
       <div class="footer-bar">
@@ -354,28 +579,6 @@ color: #9ca3af;
       </div>
     </section>
 
-<body>
-  <div class="container">
-    <h1>LOONOOL · Demo 项目主页</h1>
-    <p class="desc">这是你的静态项目首页，可以从这里进入报告模板页面。</p>
-
-    <!-- 跳转按钮 -->
-    <a class="button" href="report.pdf.html" target="_blank">
-      ➜ 打开 PDF 报告页面（report.pdf.html）
-    </a>
-
-    <!-- 可选：预览信息卡片 -->
-    <div class="card">
-      <h2>当前项目文件</h2>
-      <p>- index.html（当前页面）</p>
-      <p>- report.pdf.html（报告模板页面）</p>
-      <p>- main.js / styles.css（如有使用）</p>
-      <p>- 将来你可以在这里继续添加 Task 页面、报告入口等。</p>
-    </div>
-
-    <footer>
-      LOONOOL © 2025 · 仅用于 Demo 展示
-    </footer>
 </div>
 </body>
 </html>
