@@ -2,382 +2,105 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-<meta charset="UTF-8" />
-  <title>Logo 风险检测工具 · UI 线框图</title>
-<title>LOONOOL · Demo 主页</title>
+  <title>LOONOOL · Demo 主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     body {
       margin: 0;
-<style>
-    /* 基础 */
-    * { box-sizing: border-box; }
-body {
-margin: 0;
-padding: 0;
+      padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
         "Microsoft YaHei", system-ui, sans-serif;
       background: #f3f4f6;
       color: #111827;
-font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-"Microsoft YaHei", system-ui, sans-serif;
-background: #f3f4f6;
-color: #111827;
-}
-    .page {
-      max-width: 1200px;
-      margin: 24px auto 40px;
-      padding: 0 16px;
     }
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 600;
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
     }
-    h1 { font-size: 22px; }
-    h2 { font-size: 18px; margin-bottom: 6px; }
-    h3 { font-size: 14px; margin-bottom: 4px; }
 
-    /* 线框容器 */
-    .wireframe-section {
-      margin-bottom: 32px;
-      border: 1px dashed #cbd5f5;
-      border-radius: 10px;
-      background: #ffffff;
-      padding: 16px 16px 20px;
-    }
-    .wireframe-label {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 10px;
-}
-
-    .box {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 10px;
-      background: #f9fafb;
-      font-size: 12px;
-      color: #4b5563;
-.container {
-max-width: 800px;
-margin: 60px auto;
-padding: 0 20px;
-text-align: center;
-}
-    .box + .box { margin-top: 8px; }
-
-    .muted {
-      color: #9ca3af;
-      font-size: 11px;
-}
-
-    /* Task 页面布局 */
-    .task-header {
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 10px;
-h1 {
-font-size: 28px;
-font-weight: 700;
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
       margin-bottom: 12px;
-margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 12px;
-}
-    .task-header-left {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
     }
-    .breadcrumb {
-      font-size: 11px;
-      color: #9ca3af;
-}
-    .task-header-right {
-      font-size: 11px;
 
-p.desc {
-font-size: 14px;
+    p.desc {
+      font-size: 14px;
       color: #6b7280;
       margin-bottom: 36px;
-color: #6b7280;
-      text-align: right;
-}
-    .pill {
+    }
+
+    .button {
       display: inline-block;
-      border-radius: 999px;
-      border: 1px dashed #9ca3af;
-      padding: 2px 8px;
-      font-size: 10px;
-      margin-left: 4px;
-      margin-bottom: 36px;
-}
-
-    .task-main-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-      gap: 16px;
-      margin-bottom: 16px;
-.button {
-display: inline-block;
-padding: 14px 26px;
-@@ -44,40 +118,241 @@
-font-size: 15px;
-font-weight: 600;
-transition: all 0.2s ease;
+      padding: 14px 26px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
-}
 
-    .logo-upload-area {
-      min-height: 180px;
+    .button:hover {
+      background: #1d4ed8;
     }
-    .recent-report-area {
-      min-height: 180px;
-.button:hover {
-background: #1d4ed8;
-    }
-}
 
-    .history-table {
-      margin-top: 8px;
-      border-radius: 8px;
-.card {
-margin-top: 40px;
+    .card {
+      margin-top: 40px;
       border: 1px solid #e5e7eb;
-border: 1px solid #e5e7eb;
-      padding: 8px;
-      background: #f9fafb;
+      padding: 20px;
+      border-radius: 12px;
+      background: white;
+      text-align: left;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 60px;
       font-size: 12px;
-    }
-    .history-row {
-      display: grid;
-      grid-template-columns: 80px 80px 1fr;
-      gap: 8px;
-      padding: 6px 4px;
-      border-bottom: 1px dashed #e5e7eb;
-    }
-    .history-row:last-child {
-      border-bottom: none;
-    }
-
-    /* 报告详情页布局 */
-    .report-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
-      gap: 16px;
-      margin-top: 12px;
-    }
-    .report-left, .report-right {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .logo-preview-box {
-      height: 160px;
-padding: 20px;
-border-radius: 12px;
-background: white;
-text-align: left;
-}
-
-    .grade-box {
-      min-height: 80px;
-}
-
-    .module-card {
-      min-height: 80px;
-.card h2 {
-font-size: 20px;
-margin-bottom: 10px;
-    }
-}
-
-    .recommendation-box {
-      min-height: 80px;
-.card p {
-font-size: 14px;
-color: #4b5563;
-line-height: 1.6;
-margin-bottom: 6px;
-    }
-}
-
-    .footer-bar {
-      margin-top: 14px;
-      border-top: 1px solid #e5e7eb;
-      padding-top: 8px;
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
-footer {
-margin-top: 60px;
-font-size: 12px;
       color: #9ca3af;
-color: #9ca3af;
-}
-
-    /* 响应式 */
-    @media (max-width: 900px) {
-      .task-main-grid,
-      .report-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-}
+    }
   </style>
-</style>
 </head>
-<body>
-  <div class="page">
-
-    <!-- Task 页面线框 -->
-    <section class="wireframe-section">
-      <div class="wireframe-label">页面 1 · Task 详情页（上传 Logo + 报告列表） · 线框</div>
-
-      <!-- Header -->
-      <div class="task-header">
-        <div class="task-header-left">
-          <div class="breadcrumb">Workspace 名称 / Task 名称</div>
-          <h1>Task 标题占位（用于上传和检测 Logo）</h1>
-          <span class="muted">这里显示 Task 的简单描述 / 备注占位</span>
-        </div>
-        <div class="task-header-right">
-          <div><span class="pill">状态：草稿</span><span class="pill">类型：Logo 检测</span></div>
-          <div>右侧预留：操作按钮占位（例如：归档 / 更多）</div>
-        </div>
-      </div>
-
-      <!-- 主区域：左上传 / 右最近报告 -->
-      <div class="task-main-grid">
-        <!-- 左侧：Logo 上传区域 -->
-        <div class="box logo-upload-area">
-          <h3>左侧：Logo 上传区域</h3>
-          <p class="muted">此区域包含：</p>
-          <ul class="muted">
-            <li>Logo 预览框占位</li>
-            <li>上传按钮占位</li>
-            <li>文件格式/大小说明占位</li>
-            <li>“开始检测 / 重新检测”按钮占位</li>
-          </ul>
-        </div>
-
-        <!-- 右侧：最新报告摘要 -->
-        <div class="box recent-report-area">
-          <h3>右侧：最近一次报告摘要</h3>
-          <p class="muted">用于显示最近一次检测结果的简要信息：</p>
-          <ul class="muted">
-            <li>版本号占位：vX</li>
-            <li>综合等级占位：A–E 标签</li>
-            <li>一句话总结占位</li>
-            <li>主要风险提示占位</li>
-            <li>“查看完整报告”按钮占位</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 历史报告列表 -->
-      <div class="box">
-        <h3>历史报告列表（版本管理）</h3>
-        <p class="muted">以下为报告版本列表结构示意：</p>
-        <div class="history-table">
-          <div class="history-row">
-            <div>版本 v3</div>
-            <div>评分 B</div>
-            <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
-          <div class="history-row">
-            <div>版本 v2</div>
-            <div>评分 C</div>
-            <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
-          <div class="history-row">
-            <div>版本 v1</div>
-            <div>评分 D</div>
-            <div class="muted">[ 查看 ] [ 导出 PDF ] 按钮占位</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 报告详情页线框 -->
-    <section class="wireframe-section">
-      <div class="wireframe-label">页面 2 · 报告详情页（Safe-to-Use 报告） · 线框</div>
-
-      <!-- Header -->
-      <div class="task-header">
-        <div class="task-header-left">
-          <div class="breadcrumb">Workspace / Task / 报告</div>
-          <h1>Safe-to-Use Logo 风险报告 · vX</h1>
-          <span class="muted">这里显示报告 ID、生成时间等基础信息占位</span>
-        </div>
-        <div class="task-header-right">
-          <div><span class="pill">当前版本 vX</span><span class="pill">切换 vX-1 / vX-2</span></div>
-          <div>右上预留：导出 PDF 按钮占位</div>
-        </div>
-      </div>
-
-      <!-- 左：Logo + 综合等级   右：模块卡片 -->
-      <div class="report-grid">
-        <!-- 左列 -->
-        <div class="report-left">
-          <div class="box logo-preview-box">
-            <h3>Logo 预览区</h3>
-            <p class="muted">用于展示当前检测的 Logo 缩略图。</p>
-          </div>
-          <div class="box grade-box">
-            <h3>综合安全等级（Final Grade）</h3>
-            <p class="muted">
-              此处展示 Safe-to-Use 综合等级（A–E）和一句话总结占位。
-            </p>
-          </div>
-        </div>
-
-        <!-- 右列：四大模块 -->
-        <div class="report-right">
-          <div class="box module-card">
-            <h3>模块 1：商标相似度检测</h3>
-            <p class="muted">显示风险等级 + 原因说明 + 可折叠的详细说明占位。</p>
-          </div>
-          <div class="box module-card">
-            <h3>模块 2：行业视觉冲突</h3>
-            <p class="muted">显示行业重叠度 + 行业说明 + 细节占位。</p>
-          </div>
-          <div class="box module-card">
-            <h3>模块 3：视觉误解风险</h3>
-            <p class="muted">显示误解风险等级 + 标签 + 示例说明占位。</p>
-          </div>
-          <div class="box module-card">
-            <h3>模块 4：构图质量检测</h3>
-            <p class="muted">显示构图质量等级 + 关键发现 + 优化建议占位。</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 综合建议 -->
-      <div class="box recommendation-box" style="margin-top: 12px;">
-        <h3>综合建议（Recommendations）</h3>
-        <p class="muted">
-          此区域为整体建议占位：可以按高 / 中 / 低优先级分组列出建议内容。
-        </p>
-      </div>
-
-      <!-- Footer 操作栏 -->
-      <div class="footer-bar">
-        <span>下方预留：风险声明与简单说明占位</span>
-        <span>右侧预留：导出 PDF / 返回 Task 按钮占位</span>
-      </div>
-    </section>
 
 <body>
-<div class="container">
-@@ -101,6 +376,6 @@ <h2>当前项目文件</h2>
-<footer>
-LOONOOL © 2025 · 仅用于 Demo 展示
-</footer>
+  <div class="container">
+    <h1>LOONOOL · Demo 项目主页</h1>
+    <p class="desc">这是你的静态项目首页，可以从这里进入报告模板页面。</p>
+
+    <!-- 跳转按钮 -->
+    <a class="button" href="report.pdf.html" target="_blank">
+      ➜ 打开 PDF 报告页面（report.pdf.html）
+    </a>
+
+    <!-- 可选：预览信息卡片 -->
+    <div class="card">
+      <h2>当前项目文件</h2>
+      <p>- index.html（当前页面）</p>
+      <p>- report.pdf.html（报告模板页面）</p>
+      <p>- main.js / styles.css（如有使用）</p>
+      <p>- 将来你可以在这里继续添加 Task 页面、报告入口等。</p>
+    </div>
+
+    <footer>
+      LOONOOL © 2025 · 仅用于 Demo 展示
+    </footer>
   </div>
-</div>
 </body>
 </html>
